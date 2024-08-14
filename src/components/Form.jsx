@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import MealsList from "./MealsList";
 import IngredientsList from "./IngredientsList";
 
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 const Form = () => {
   const [formData, setFormData] = useState("Tell us about yourself.....Rick");
   const [ingredientsData, setIngredientsData] = useState(
@@ -16,7 +18,7 @@ const Form = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const res = await fetch("http://localhost:4000/meals", {
+      const res = await fetch(`${backendUrl}/meals`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ input: formData }),
