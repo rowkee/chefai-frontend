@@ -20,7 +20,10 @@ const Form = () => {
     try {
       const res = await fetch(`${backendUrl}/meals`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
         body: JSON.stringify({ input: formData }),
       });
       const data = await res.json();
